@@ -1,0 +1,61 @@
+﻿@model DetailParkirTampView
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Detail User</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Detail">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Type Transportasi</td>
+                                <td>@Model.NamaType</td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Plat</td>
+                            <td>@Model.PlateNomor</td>
+                        </tr>
+                        <tr>
+                                <td>Waktu Masuk</td>
+                            <td>@Model.WaktuMasuk</td>
+                        </tr>
+                        <input type="hidden" name="Parkir" value="@Model.ParkirId" />
+                        <tr>
+                            <td>Biaya Per Jam</td>
+                            <td><span>Rp</span>@Model.BiayaPerJam</td>
+                            <input type="hidden" name="BiayaPerJam" value="@Model.BiayaPerJam" />
+                        </tr>
+                        <tr>
+                            <td>Biaya Parkir</td>
+                                <td><span>Rp</span>@Model.BiayaParkir.ToString("N2")</td>
+                            <input type="hidden" name="BiayaParkir" value="@Model.BiayaParkir" />
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <select asp-for="Status" name="status">
+                                    <option value="belum bayar">belum bayar</option>
+                                    <option value="sudah bayar">sudah bayar</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                    <button type="submit" class="btn btn-success">
+                        Simpan
+                    </button>
+                     <a href="/Parkir/Index" class="btn btn-primary">Kembali</a>
+                    
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,64 @@
+﻿<style>
+       .container {
+          
+           justify-content : space-around;
+           gap : 20px;
+       }
+       #ini-id {
+            gap : 2px;
+       }
+
+       i {
+           font-size : 26px;
+       }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] ParkingMall</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/headers.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ParkingMall.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <div class="container">
+
+        <main>
+            <div class="container">
+                <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                       ParkingMall USEFUL WELL
+                    </a>
+
+                    <ul class="nav nav-pills mt-4">
+                        <li class="nav-item"><a href="/Parkir/Index" class="btn btn-outline-dark">Parkir</a></li>
+                        <li class="nav-item"><a href="/TypeTransportasi/Index" class="btn btn-outline-dark">Type Transportasi</a></li>
+                        <li class="nav-item">
+                            <form action="/Account/Logout" method="post">
+                                <button id="ini-id" type="submit" class="btn btn-outline-dark"><i class="bi bi-box-arrow-right"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                </header>
+            </div>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container text-center">
+             <i class="bi bi-p-circle-fill"></i> By :sandiAdrian 2024
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> 

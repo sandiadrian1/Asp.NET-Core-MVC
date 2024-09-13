@@ -1,0 +1,46 @@
+﻿@model ParkirTampForm
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="bi bi-p-circle-fill"></i></h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Create">
+                    <div class="mb-3">
+                        <label>Type Transportasi</label>
+                        <select asp-for="TypeTransportasi" asp-items="@ViewBag.TransportationTypes" class="form-control">
+                            <option>Pilih Type Transportasi</option>
+                        </select> 
+                    </div>
+                    <div class="mb-3">
+                        <label>Plat Nomor</label>
+                        <input type="text" name="PlateNomor" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Waktu Masuk</label>
+                        <input type="datetime-local" name="WaktuMasuk" class="form-control" id="WaktuMasuk" />
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const datetimeLocalInput = do cument.getElementById('TimeEntry');
+    const now = new Date();
+    const formattedNow = now.toISOString().slice(0, 16);
+    // Atur nilai maksimum datetime-local ke waktu saat ini juga
+    datetimeLocalInput.max = formattedNow;
+</script>

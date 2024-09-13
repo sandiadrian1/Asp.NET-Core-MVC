@@ -1,0 +1,51 @@
+﻿@model Parkir
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit Parkir</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Edit">
+                    <input type="hidden" 
+                     name="Id"
+                     value="@Model.Id" />
+
+                    <div class="mb-3">
+                        <label>Transportation Type</label>
+                        <select asp-for="TypeTransportasi" asp-items="@ViewBag.TransportationTypes" class="form-control">
+                            @Model.TypeTransportasi.Nama
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Nomor Plat</label>
+                        <input type="text" 
+                         name="PlateNomor"
+                         class="form-control" 
+                         value="@Model.PlateNomor"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Waktu Masuk</label>
+                        <input type="datetime-local" 
+                        name="WaktuMasuk"
+                        class="form-control"
+                        value="@Model.WaktuMasuk"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

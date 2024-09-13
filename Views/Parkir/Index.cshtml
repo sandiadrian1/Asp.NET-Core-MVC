@@ -1,0 +1,238 @@
+﻿@model List<Parkir>
+@{
+    Layout = "_HeaderAside";
+}
+
+
+
+
+<style>
+
+    * {
+        border: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    button,
+    input {
+        font: 1em sans-serif;
+        line-height: 1.5em;
+    }
+
+  
+
+    
+    .search-bar {
+        display: flex;
+    }
+
+ */
+    .search-bar input,
+    .search-button,
+    .search-button:before,
+    .search-button:after {
+        transition: all 0.25s ease-out;
+    }
+
+    .search-bar input,
+    .search-button {
+        width: 3em;
+        height: 3em;
+    }
+
+        .search-bar input:invalid:not(:focus),
+        .search-button {
+            cursor: pointer;
+        }
+
+        .search-bar,
+        .search-bar input:focus,
+        .search-bar input:valid {
+            width: 50%;
+        }
+
+            .search-bar input:focus,
+            .search-bar input:not(:focus) + .search-button:focus {
+                outline: transparent;
+            }
+
+    .search-bar {
+        margin: auto;
+        padding: 1.5em;
+        justify-content: center;
+        max-width: 30em;
+        font-size: 17px;
+    }
+
+        .search-bar input {
+            background: transparent;
+            border-radius: 1.5em;
+            box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+            padding: 0.75em;
+            transform: translate(0.5em, 0.5em) scale(0.5);
+            transform-origin: 100% 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+            .search-bar input:focus,
+            .search-bar input:valid {
+                background: #282539;
+                border-radius: 0.375em 0 0 0.375em;
+                box-shadow: 0 0 0 0.1em #cbbddb inset;
+                transform: scale(1);
+            }
+
+    .search-button {
+        background: #f1f1f1;
+        b order-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+        padding: 0.75em;
+        position: relative;
+        transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+        transform-origin: 0 50%;
+    }
+
+        .search-button:before,
+        .search-button:after {
+            content: "";
+            display: block;
+            opacity: 0;
+            position: absolute;
+        }
+
+        .search-button:before {
+            border-radius: 50%;
+            box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+            top: 0.75em;
+            left: 0.75em;
+            width: 1.2em;
+            height: 1.2em;
+        }
+
+        .search-button:after {
+            background: #f1f1f1;
+            border-radius: 0 0.25em 0.25em 0;
+            top: 51%;
+            left: 51%;
+            width: 0.75em;
+            height: 0.25em;
+            transform: translate(0.2em, 0) rotate(45deg);
+            transform-origin: 0 50%;
+        }
+
+        .search-button span {
+            display: inline-block;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+        }
+
+    input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-left: 10px;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, #cbbddb 45%, #cbbddb 55%, rgba(0, 0, 0, 0) 57%, rgba(0, 0, 0, 0) 100%), linear-gradient(135deg, transparent 0%, transparent 43%, #cbbddb 45%, #cbbddb 55%, transparent 57%, transparent 100%);
+    }
+
+    .search-bar input:focus + .search-button,
+    .search-bar input:valid + .search-button {
+        background: #8f7cec;
+        border-radius: 0 0.375em 0.375em 0;
+        transform: scale(1);
+    }
+
+        .search-bar input:focus + .search-button:before,
+        .search-bar input:focus + .search-button:after,
+        .search-bar input:valid + .search-button:before,
+        .search-bar input:valid + .search-button:after {
+            opacity: 1;
+        }
+
+        .search-bar input:focus + .search-button:active,
+        .search-bar input:valid + .search-button:active {
+            transform: translateY(1px);
+        }
+
+     .bungkus {
+          margin: 10px;
+     }
+     h3 {
+         display:flex ; 
+         align-items :center;
+         justify-content:center;
+     }
+     span {
+         padding-left : 15%;
+         padding-right : 15%;
+     }
+
+     #ini-id {
+         gap : 15px;
+     }
+     #adada {
+         padding-left : 10px;
+         font-size : 20px;
+     }
+</style>
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                
+                <h3><span> <i class="bi bi-p-circle-fill"></i></span>Daftar Parkir<span> <i class="bi bi-p-circle-fill"></i></span></h3>
+                
+            </div>
+
+            <div class="card-body" id="ini-id">
+                <a href="/Parkir/Create" class="btn btn-success mb-2">Tambah Parkir<i id="adada" class="bi bi-plus-circle"></i></a>
+
+                <div class="bungkus">
+
+                    <form action="Index" method="get" class="search-bar">
+                        <input type="text" name="search" placeholder="Nomor Plat" required autocomplete="off">
+                        <button class="search-button" type="submit">
+                            <span>Search</span>
+                        </button>
+                    </form>
+                </div>
+                <table border="1" cellspacing="0"  class="table table-hover">
+                    <thead>
+                        <tr class="table-danger">
+                            <th>Type Transportasi</th>
+                            <th>Nomor Plat</th>
+                            <th>Waktu Masuk</th>
+                            <th text-align="center" >CRUD</th>
+                        </tr>
+                    </thead>
+
+                     <tbody>
+                        @foreach (var parkir in Model)
+                        {
+                            <tr class="table-default">
+                                <th>@parkir.TypeTransportasi.Nama</th>
+                                <td>@parkir.PlateNomor</td>
+                                <td>@parkir.WaktuMasuk</td>
+
+                                 <td>
+                                    <a href="/Parkir/Detail/@parkir.Id" class="btn btn-primary">Detail</a>
+                                    <a href="/Parkir/Edit/@parkir.Id" class="btn btn-warning">Edit</a>
+                                    <a href="/Parkir/Delete/@parkir.Id" class="btn btn-danger">Delete</a>
+                                </td>
+ 
+                            </tr>
+                        }
+                    </tbody>
+                 </table>
+            </div>
+        </div>
+    </div>
+</div>

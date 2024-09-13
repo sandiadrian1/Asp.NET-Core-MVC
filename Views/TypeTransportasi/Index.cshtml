@@ -1,0 +1,42 @@
+﻿@model List<TypeTransportasi>
+
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+           
+            <div class="card-body">
+                <a href="/TypeTransportasi/Create" class="btn btn-success mb-2">Tambah Type Transportasi</a>
+
+                <table border="1" cellspacing="0"  class="table table-hover" >
+                    <thead>
+                        <tr class="table-danger">
+                            <th>Nama</th>
+                            <th>Biaya Per Jam</th>
+                            <th>CRUD</th>
+                        </tr>
+                    </thead>
+                     
+                    <tbody>
+                        @foreach (var typeTransportasi in Model)
+                        {
+                            <tr class="table-default">
+                                <th>@typeTransportasi.Nama</th>
+                                <td>@typeTransportasi.BiayaPerJam</td>
+
+                                <td>
+                                    <a href="/TypeTransportasi/Edit/@typeTransportasi.Id" class="btn btn-warning">Edit</a>
+                                    <a href="/TypeTransportasi/Delete/@typeTransportasi.Id" class="btn btn-danger">Delete</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

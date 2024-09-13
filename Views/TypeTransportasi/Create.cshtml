@@ -1,0 +1,91 @@
+﻿@* @{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Add Type Transportasi</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Create">
+                    <div class="mb-3">
+                         <label>Nama Type Transportasi</label>
+                        <select 
+                            name="Nama" 
+                            class="form-control">
+                            <option>Motor</option>
+                            <option>Mobil</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Biaya Perjam</label>
+                        <input type="text" name="BiayaPerJam" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ *@
+
+
+
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Add Type Transportasi</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Create">
+                    <div class="mb-3">
+                        <label>Type Transportasi</label>
+                        <select name="Nama"
+                                id="namaTransportasi"
+                                class="form-control">
+                            <option value="Motor">Motor</option>
+                            <option value="Mobil">Mobil</option>
+                            <option value="Becak">Becak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Biaya Perjam</label>
+                        <input type="text" name="BiayaPerJam" id="biayaPerJam" class="form-control" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#namaTransportasi').change(function () {
+                var biayaPerJam = $('#namaTransportasi').val() === "Motor" ? 3000 : 5000;
+                $('#biayaPerJam').val(biayaPerJam);
+            });
+            // Set default value
+            $('#namaTransportasi').trigger('change');
+        });
+    </script>
+}

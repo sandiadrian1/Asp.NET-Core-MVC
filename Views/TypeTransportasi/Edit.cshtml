@@ -1,0 +1,36 @@
+﻿@model TypeTransportasi
+@{
+    Layout = "_HeaderAside";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit Type Transportasi</h3>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="Edit">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+
+                    <div class="mb-3">
+                        <label>Type Transportasi</label>
+                        <input type="text" name="Nama" class="form-control" value="@Model.Nama" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Biaya Per Jam</label>
+                        <input type="text" name="BiayaPerJam" class="form-control" value="@Model.BiayaPerJam" />
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
